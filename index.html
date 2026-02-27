@@ -1,66 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><h6>HairAI Pro v3.2</h6></title>
+  <title>HairAI Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      text-align: center;
-      background: #0f0f0f;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: white;
-      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 25px;
     }
 
     input, select, button {
-      padding: 10px;
-      margin: 10px;
-      width: 260px;
-      border-radius: 5px;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 8px;
       border: none;
+      font-size: 16px;
+    }
+
+    input, select {
+      background: #2a2a2a;
+      color: white;
     }
 
     button {
       background: #00ff88;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00cc6a;
     }
 
     #result {
-      margin-top: 25px;
-      font-size: 18px;
+      margin-top: 20px;
+      font-size: 16px;
       line-height: 1.6;
     }
 
     .taunt {
       margin-top: 15px;
-      font-size: 20px;
       color: #ff4d4d;
       font-weight: bold;
     }
+
   </style>
 </head>
+
 <body>
 
-<h1>🧠 HairAI Pro - Neural Follicle Scanner</h1>
+<div class="container">
 
-<input type="text" id="name" placeholder="Enter your name"><br>
-<input type="number" id="age" placeholder="Enter your age"><br>
+<h1>🧠 HairAI Pro - Neural Scanner</h1>
+
+<input type="text" id="name" placeholder="Enter your name">
+<input type="number" id="age" placeholder="Enter your age">
 
 <select id="hairType">
   <option>Straight</option>
   <option>Curly</option>
   <option>Wavy</option>
   <option>Bald</option>
-</select><br>
+</select>
 
-<input type="file"><br>
+<input type="file">
 
 <button onclick="analyze()">Run AI Scan</button>
 
 <div id="result"></div>
 
+</div>
+
 <script>
 function analyze() {
+
   let name = document.getElementById("name").value || "Human";
   let hairType = document.getElementById("hairType").value;
   let resultDiv = document.getElementById("result");
@@ -72,37 +109,31 @@ function analyze() {
   }, 1500);
 
   setTimeout(() => {
-    resultDiv.innerHTML = "🧪 Running density calibration model...";
+    resultDiv.innerHTML = "🧪 Running density calibration...";
   }, 3000);
 
   setTimeout(() => {
+
     let hairCount = Math.floor(Math.random() * (120000 - 85000) + 85000);
     let confidence = (Math.random() * (99 - 92) + 92).toFixed(2);
 
     if (hairType === "Bald") {
-      hairCount = Math.floor(Math.random() * 20);
+      hairCount = Math.floor(Math.random() * 10);
       confidence = 100;
     }
 
     resultDiv.innerHTML =
       "✅ Scan Complete.<br><br>" +
-      name + ", our AI estimates you have approximately <b>" +
-      hairCount +
-      "</b> hairs.<br>" +
-      "AI Confidence: <b>" + confidence + "%</b><br><br>" +
-      "📊 Based on follicle density mapping and strand clustering algorithms.";
+      name + ", you have approximately <b>" + hairCount + "</b> hairs.<br>" +
+      "AI Confidence: <b>" + confidence + "%</b>";
 
   }, 5000);
 
   setTimeout(() => {
     resultDiv.innerHTML +=
-      "<div class='taunt'>😭 Wait... you actually believed we counted them one by one?</div>";
+      "<div class='taunt'>😭 Wait... you actually believed this?</div>";
   }, 7000);
 
-  setTimeout(() => {
-    resultDiv.innerHTML +=
-      "<div class='taunt'>Bro this is just random math.</div>";
-  }, 9000);
 }
 </script>
 
