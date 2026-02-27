@@ -122,16 +122,11 @@ function analyze() {
       confidence = 100;
     }
 
-    resultDiv.innerHTML =
-      "✅ Scan Complete.<br><br>" +
-      name + ", you have approximately <b>" + hairCount + "</b> hairs.<br>" +
-      "AI Confidence: <b>" + confidence + "%</b>";
-
-  }, 5000);
+   
 
   setTimeout(() => {
     resultDiv.innerHTML +=
-      "<div class='taunt'>😭 Wait... you actually believed this?</div>";
+      "<div class='taunt'>Just like your logic it got lost</div>";
   }, 7000);
 
 }
