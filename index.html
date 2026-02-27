@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><h6>HairAI Pro v3.2</h6></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #0f0f0f;
+      color: white;
+      padding: 40px;
+    }
+
+    input, select, button {
+      padding: 10px;
+      margin: 10px;
+      width: 260px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: #00ff88;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .taunt {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #ff4d4d;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🧠 HairAI Pro - Neural Follicle Scanner</h1>
+
+<input type="text" id="name" placeholder="Enter your name"><br>
+<input type="number" id="age" placeholder="Enter your age"><br>
+
+<select id="hairType">
+  <option>Straight</option>
+  <option>Curly</option>
+  <option>Wavy</option>
+  <option>Bald</option>
+</select><br>
+
+<input type="file"><br>
+
+<button onclick="analyze()">Run AI Scan</button>
+
+<div id="result"></div>
+
+<script>
+function analyze() {
+  let name = document.getElementById("name").value || "Human";
+  let hairType = document.getElementById("hairType").value;
+  let resultDiv = document.getElementById("result");
+
+  resultDiv.innerHTML = "🔍 Initializing Neural Hair Network...";
+
+  setTimeout(() => {
+    resultDiv.innerHTML = "📡 Scanning follicle clusters...";
+  }, 1500);
+
+  setTimeout(() => {
+    resultDiv.innerHTML = "🧪 Running density calibration model...";
+  }, 3000);
+
+  setTimeout(() => {
+    let hairCount = Math.floor(Math.random() * (120000 - 85000) + 85000);
+    let confidence = (Math.random() * (99 - 92) + 92).toFixed(2);
+
+    if (hairType === "Bald") {
+      hairCount = Math.floor(Math.random() * 20);
+      confidence = 100;
+    }
+
+    resultDiv.innerHTML =
+      "✅ Scan Complete.<br><br>" +
+      name + ", our AI estimates you have approximately <b>" +
+      hairCount +
+      "</b> hairs.<br>" +
+      "AI Confidence: <b>" + confidence + "%</b><br><br>" +
+      "📊 Based on follicle density mapping and strand clustering algorithms.";
+
+  }, 5000);
+
+  setTimeout(() => {
+    resultDiv.innerHTML +=
+      "<div class='taunt'>😭 Wait... you actually believed we counted them one by one?</div>";
+  }, 7000);
+
+  setTimeout(() => {
+    resultDiv.innerHTML +=
+      "<div class='taunt'>Bro this is just random math.</div>";
+  }, 9000);
+}
+</script>
+
+</body>
+</html>
